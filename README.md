@@ -4,4 +4,4 @@
 
 ### version
 * java : 11.0.3
-* Springboot : 2.4.1
+* Springboot : 2.1.9
