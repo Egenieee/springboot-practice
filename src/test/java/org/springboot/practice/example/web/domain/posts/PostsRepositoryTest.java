@@ -33,7 +33,7 @@ public class PostsRepositoryTest {
         String title = "테스트 게시글";
         String content = "테스트 본문";
 
-        postsRepository.save(Posts.builder() // 테이블 posts에 insert/update 쿼리를 실행한다.
+        postsRepository.save(Posts.builder() // 테이블 posts에 insert/update 쿼리를 실행한다. id값이 있다면 update가, 없다면 insert 쿼리가 실행된다.
                 .title(title)
                 .content(content)
                 .author("ab23202304@gmail.com")
