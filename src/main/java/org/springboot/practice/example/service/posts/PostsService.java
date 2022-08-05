@@ -25,7 +25,7 @@ public class PostsService {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
 
-        posts.update(posts.getTitle(), posts.getContent());
+        posts.update(requestDto.getTitle(), requestDto.getContent());
 
         return id;
     }
