@@ -29,6 +29,13 @@ public class PostsService {
 
         return id;
     }
+
+    public PostsResponseDto findById(Long id) {
+        Posts entity = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        return new PostsResponseDto(entity);
+    }
 }
 
 // 서비스 클래스에서는 트랜잭션과 도메인 간의 순서만 보장해준다.
