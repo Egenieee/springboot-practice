@@ -19,14 +19,14 @@
             </tr>
             </thead>
             <tbody id="tbody">
-            {{#post}} <!-- [mustache 문법] posts라는 List를 순회한다. java의 for-loop이라고 생각하자.-->
+            {{#posts}} <!-- [mustache 문법] posts라는 List를 순회한다. java의 for-loop이라고 생각하자.-->
                 <tr>
                     <td>{{id}}</td> <!-- List에서 뽑아낸 객체의 필드를 사용한다. -->
                     <td>{{title}}</td>
-                    <td>{{content}}</td>
+                    <td>{{author}}</td>
                     <td>{{modifiedDate}}</td>
                 </tr>
-            {{/post}}
+            {{/posts}}
             </tbody>
         </table>
     </div>
