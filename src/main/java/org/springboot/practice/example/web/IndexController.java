@@ -10,6 +10,11 @@ public class IndexController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/posts/save")
+    public String postsSave() {
+        return "posts-save";
+    }
 }
 
 // 머스테치에 URL을 매핑해보자
