@@ -1,6 +1,9 @@
 package org.springboot.practice.example.domain.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 // Dao라고 불리는 DB Layer 접근자이다.
 // 단순히 인터페이스를 생성 후에, JpaRepository<Entity class, PK 타입>를 상속하면 기본적인 CRUD 메서드가 자동으로 생성된다.
@@ -8,4 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 // 따라서 엔티티와 리포지토리는 함께 움직여야 하므로 도메인 패키지에서 함께 관리한다.
 public interface PostsRepository extends JpaRepository<Posts, Long> {
 
+    @Query("SELECT p FROM Posts p ORDER BY p.id DESC") // SpringDataJpa에서 제공하지 않는 메소드는 쿼리로 작성해도 된다.
+    List<Posts> findAllDesc();
 }

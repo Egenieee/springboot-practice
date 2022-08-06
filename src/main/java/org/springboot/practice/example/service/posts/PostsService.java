@@ -3,11 +3,15 @@ package org.springboot.practice.example.service.posts;
 import lombok.RequiredArgsConstructor;
 import org.springboot.practice.example.domain.posts.Posts;
 import org.springboot.practice.example.domain.posts.PostsRepository;
+import org.springboot.practice.example.web.dto.PostsListResponseDto;
 import org.springboot.practice.example.web.dto.PostsResponseDto;
 import org.springboot.practice.example.web.dto.PostsSaveRequestDto;
 import org.springboot.practice.example.web.dto.PostsUpdateRequestDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -35,6 +39,13 @@ public class PostsService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
 
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional(readOnly = true) // 트랜잭션 범위는 유지하되 조회 기능만 남겨두어 조회 속도가 개선된다. -> 등록, 수정, 삭제 기능이 전혀 없는 서비스 메소드에서 사용하는 것을 추천
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 }
 
