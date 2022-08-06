@@ -3,6 +3,7 @@ package org.springboot.practice.example.domain.posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springboot.practice.example.domain.BaseTimeEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor // 기본 생성자 자동 추가
 @Entity // 데이터베이스 테이블과 링크될 클래스임을 나타낸다.
 // 기본값으로 클래스의 카멜케이스 이름은 언더스코어 네이밍으로 테이블 이름을 매칭한다. (ex SalesManager -> sales_manager table)
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id // 해당 테이블의 PK 필드를 나타낸다.
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK의 생성 규칙을 나타낸다.
