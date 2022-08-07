@@ -47,6 +47,16 @@ public class PostsService {
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public void delete(Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        postsRepository.delete(posts); // 엔티티를 파라미터로 삭제할 수도 있고, deleteById를 사용하면 id로 삭제할 수 있다.
+        // 존재하는 Posts인지 확인을 위해 엔티티 조회 후 삭제한다.
+
+    }
 }
 
 // 서비스 클래스에서는 트랜잭션과 도메인 간의 순서만 보장해준다.
