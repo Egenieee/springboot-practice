@@ -22,7 +22,7 @@ import java.util.Collections;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final UserRepository userRepository;
-    private final HttpSession httpSession;
+    private final HttpSession httpSession; // 로그인 유지를 위한 세션. 로그인 정보를 세션에 담고, 세션을 이요해서 로그인 여부를 검증할 수 있고 회원의 정보를 언제든지 불러올 수 있다.
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {

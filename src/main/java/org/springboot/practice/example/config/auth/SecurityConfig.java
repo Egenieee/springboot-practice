@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                         "/js/**", "/h2-console/**").permitAll()
                     .antMatchers("/api/v1/**").hasRole(Role.USER.name()) // "/api/v1/**" 주소를 가진 API는 USER 권한을 가진 사람만 가능하도록 하였다.
                     .anyRequest().authenticated() // 설정된 값들 이외 나머지 URL 들을 나타낸다. 여기서는 나머지 URL들은 모두 인증된 사용자들에게만 허용하게 한다. 즉 로그인한 사용자들을 이야기한다.
+                // 로그인이 안된 사용자라면 스프링 시큐리티는 요청을 잡아내고 사용자를 로그인 페이지로 리다이렉션 해준다.
                 .and()
                     .logout()// 로그 아웃 기능에 대한 여러 설정의 진입점.
                         .logoutSuccessUrl("/") // 로그아웃 성공시 /주소로 이동한다.
